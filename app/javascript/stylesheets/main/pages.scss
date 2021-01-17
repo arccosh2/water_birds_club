@@ -1,0 +1,20 @@
+.question {
+  margin: auto;
+  background-image: url("~question.svg");
+  background-repeat: no-repeat;
+  height: 25px;
+  width: 25px;
+  background-size: 25px !important;
+}
+
+.linear {
+  background: linear-gradient(transparent 50%, rgb(188, 222, 235) 50%);
+}
+
+.card-text {
+  letter-spacing: 0.1em;
+}
+
+.under {
+  border-bottom: dotted 2px #80b8db;
+}

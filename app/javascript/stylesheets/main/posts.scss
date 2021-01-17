@@ -1,0 +1,137 @@
+
+img {
+  max-width: 100% !important;
+}
+.card-wrap {
+  margin: 40px 0px;
+}
+
+.no-text-decoration:hover {
+  text-decoration: none;
+}
+
+.black-color {
+  color: #262626;
+}
+
+.parts {
+  margin: 12px 0;
+}
+
+.plus {
+  margin: auto;
+  background-image: url("~plus.svg");
+  background-repeat: no-repeat;
+  height: 40px;
+  width: 40px;
+  background-size: 40px !important;
+}
+
+.love {
+  background-image: url("~wing.png");
+  background-repeat: no-repeat;
+  height: 36px;
+  width: 36px;
+  background-size: 27px !important;
+}
+
+.comment {
+  margin-left: 8px;
+  background-image: url("~balloon.svg");
+  background-repeat: no-repeat;
+  height: 36px;
+  width: 36px;
+  background-size: 30px !important;
+}
+
+.post-time {
+  margin:0;
+  color:#999;
+  font-size:10px;
+}
+
+.light-color {
+  margin:0;
+  color:#555;
+}
+
+.post-sub-text {
+  text-decoration: none;
+  color: #262626;
+}
+
+.post-wrap .col-md-8 {
+  padding: 0px;
+}
+
+.card-right {
+  padding: 20px;
+}
+
+.card-right-name {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e6e6e6;
+  display: flex;
+}
+
+.card-right-comment {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e6e6e6;
+  height: 320px;
+  overflow: auto;
+}
+
+.postShow-wrap {
+  border: 1px solid #e6e6e6;
+  margin: 40px;
+}
+
+.post-user-name {
+  display: flex;
+  align-items: center;
+  line-height: 0;
+}
+
+.delete-post-icon {
+  background-image: url("~trash.svg");
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 20px;
+  background-size: 20px !important;
+  color: #262626;
+  font-size: 20px;
+}
+
+.loved {
+  background-image: url("~wing_love.png");
+  background-repeat: no-repeat;
+  height: 36px;
+  width: 36px;
+  background-size: 27px !important;
+}
+
+.hide-text {
+  display: block;
+  overflow: hidden;
+  text-indent: 110%;
+  white-space: nowrap;
+}
+
+.delete-comment {
+  background-image: url("~close.svg");
+  background-repeat: no-repeat;
+  width: 11px;
+  height: 11px;
+  float: right;
+  margin: 5px 0 0 10px;
+  background-size: 11px !important;
+}
+
+strong {
+  padding: 8px;
+}
+
+.caption-field {
+  margin-left: 10px;
+}
+

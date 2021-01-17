@@ -1,0 +1,128 @@
+<div id="global-container">
+  <div id="container">
+    <div id="content">
+      <h2 class="main-title">Water Bird Club</h2>
+      <div class="hero">
+        <div class="swiper-container">
+          <!-- Additional required wrapper -->
+          <div class="swiper-wrapper">
+            <!-- Slides -->
+            <div class="swiper-slide">
+              <%= image_tag 'img01.JPG' %> 
+            </div>
+            <div class="swiper-slide">
+              <%= image_tag 'img07.JPG' %> 
+            </div>
+            <div class="swiper-slide">
+              <%= image_tag 'img03.JPG' %> 
+            </div>
+            <div class="swiper-slide">
+              <%= image_tag 'img04.JPG' %> 
+            </div>
+            <div class="swiper-slide">
+              <%= image_tag 'img05.JPG' %> 
+            </div>
+            <div class="swiper-slide">
+              <%= image_tag 'img06.JPG' %> 
+            </div>
+            <div class="swiper-slide">
+              <%= image_tag 'img08.JPG' %> 
+            </div>
+            <div class="swiper-slide">
+              <%= image_tag 'img10.JPG' %> 
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div id="main-content">
+        <main>
+          <section class="birds content-width">
+            <div>
+              <h3 class="font-md">ABOUT</h3>
+            </div>
+            <div class="birds__inner">
+              <div class="sagi__content">
+                <div class="birds__img sagi">
+                  <%= image_tag 'sagi.svg' %> 
+                </div>
+                <div class="words-right font-sm">
+                  <p class="tween-animate-title">ここは、私たち水鳥の生体に迫る場所。</p>
+                </div>
+              </div>
+              <div class="ahiru__content">
+                <div class="birds__img ahiru">
+                  <%= image_tag 'ahiru.svg' %> 
+                </div>
+                <div class="words-left font-sm">
+                  <p class="tween-animate-title">私たちのことをもっと知ってもらいたいな。</p>
+                </div>
+              </div>
+            </div>
+            <div class="entrance">
+              <div class="log__in">
+                <% if logged_in? %>
+                  <%= link_to "PHOTO", posts_path, class: "btn solid" %>
+                <% else %>
+                  <%= link_to "LOG IN", login_path, class: "btn solid" %>
+                <% end %>
+              </div>
+              <div class="sign__up">
+                <% if logged_in? %>
+                  <%= link_to "LOG OUT", logout_path, class: "btn solid", method: :delete %>
+                <% else %>
+                  <%= link_to "SIGN UP", new_user_path, class: "btn solid" %>
+                <% end %>
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<%# 以下、swiperに関するJavascriptの記述 %>
+<script>
+  class HeroSlider {
+    constructor(el) {
+      this.el = el;
+      this.swiper = this._initSwiper();
+    }
+
+    _initSwiper() {
+      return new Swiper(this.el, {
+        // Optional parameters
+        // direction: 'vertical',
+        loop: true,
+        grabCursor: true,
+        effect: 'coverflow',
+        centeredSlides: true,
+        slidesPerView: 1,
+        speed: 1000,
+        breakpoints: {
+          1024: {
+            slidesPerView: 2,
+          }
+        },
+      });
+
+    }
+
+    start(options = {}) {
+      options = Object.assign({
+        delay: 4000,
+        disableOnInteraction: false
+      }, options);
+
+      this.swiper.params.autoplay = options
+      this.swiper.autoplay.start();
+    }
+
+    stop() {
+      this.swiper.autoplay.stop();
+    }
+  }
+</script>

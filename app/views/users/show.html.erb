@@ -1,0 +1,78 @@
+<div class="content-width">
+  <div class="profile">
+    <%= gravatar_for @user, size: 120 %>
+  
+    <h1><%= @user.username %></h1>
+
+    <% if @user == current_user || current_user.admin? %>
+      <%= link_to "プロフィールを編集", edit_user_path, class: "btn edit-profile-btn　btn-outline-dark common-btn" %>
+      <%= link_to "", help_path, class: "question row" %>
+      <p>
+        <%= @user.email %>
+      </p>
+    <% end %>
+  </div>
+    <div class="flickr_pagination">
+      <%= will_paginate @posts, :container => false %>
+    </div>
+    <% @posts.each do |post| %>
+      <div class="col-md-8 col-md-2 mx-auto">
+        <div class="card-wrap">
+          <div class="card">
+            <div class="card-header align-items-center d-flex">
+              <% if post.user_id == current_user.id || current_user.admin? %>
+                <%= link_to post_path(post), method: :delete, class: "ml-auto mx-0 my-auto" do %>
+                  <div class="delete-post-icon">
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+
+          <%= link_to(post_path(post)) do %>
+            <%= image_tag post.photos.first.image.url(:medium), class: "card-img-top" %>
+          <% end %>
+
+            <div class="card-body">
+              <div class="row parts">
+                <div id="like-icon-post-<%= post.id.to_s %>">
+                  <% if post.liked_by(current_user).present? %>
+                    <%= link_to "いい羽を取り消す", post_like_path(post.id, post.liked_by(current_user)), method: :DELETE, remote: true, class: "loved hide-text" %>
+                  <% else %>
+                    <%= link_to "いい羽", post_likes_path(post), method: :POST, remote: true, class: "love hide-text" %>
+                  <% end %>
+                </div>
+                <%= link_to "", "#", class: "comment" %>
+              </div>
+              <div id="like-text-post-<%= post.id.to_s %>">
+                <%= render "posts/like_text", { likes: post.likes } %>
+              </div>
+              <div>
+                <span><strong><%= post.user.username %></strong></span>
+                <span><%= post.caption %></span>
+                <%= link_to time_ago_in_words(post.created_at).upcase + "前", post_path(post), class: "post-time no-text-decoration" %>
+                
+                <div id="comment-post-<%= post.id.to_s %>">
+                <%= render 'posts/comment_list', { post: post } %>
+                </div>
+                <%= link_to time_ago_in_words(post.created_at).upcase + "前", post_path(post),
+                  class: "light-color post-time no-text-decoration" %>
+                <hr>
+                <div class="row actions" id="comment-form-post-<%= post.id.to_s %>">
+                  <%= form_with model: [post, Comment.new], class: "w-100" do |f| %>
+                    <%= f.hidden_field :user_id, value: current_user.id %>
+                    <%= f.hidden_field :post_id, value: post.id %>
+                    <%= f.text_field :comment, class: "form-control comment-input border-0", placeholder: "コメント ...", autocomplete: :off %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <div class="flickr_pagination">
+      <%= will_paginate @posts, :container => false %>
+    </div>
+</div>
+
+

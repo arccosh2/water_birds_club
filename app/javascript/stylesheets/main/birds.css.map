@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,YAAY,EAAE,KAAK,CAAC;EAClB,MAAM,EAAE,SAAS;EACjB,MAAM,EAAE,eAAe;EACvB,KAAK,EAAE,IAAI;EACX,OAAO,EAAE,GAAG;EACZ,cAAc,EAAE,KAAK;CACtB;;AAED,AAAA,YAAY,CAAC;EACX,MAAM,EAAE,GAAG,CAAC,KAAK,CAAC,OAAkB;EACpC,OAAO,EAAE,GAAG;CACb",
+    "sources": [
+        "birds.scss"
+    ],
+    "names": [],
+    "file": "birds.css"
+}

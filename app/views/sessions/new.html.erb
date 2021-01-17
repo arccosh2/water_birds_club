@@ -1,0 +1,21 @@
+<h3>ログイン</h3>
+
+<div class="form-wrapper">
+  <%= form_with(scope: :session, url: login_path, local: true) do |f| %>
+    <div class="form-item">
+      <%= f.label :メールアドレス %>
+      <%= f.email_field :email, class: "input", placeholder: "メールアドレス" %>
+    </div>
+    <div class="form-item">
+      <%= f.label :パスワード %>
+      <%= f.password_field :password, class: "input", placeholder: "パスワード" %>
+    </div>
+    <div class="button-panel">
+      <%= f.submit "LOG IN", class: "btn-sub" %>
+    </div>
+   <% end %>
+  <div class="form-footer">
+    <p><%= link_to "アカウントを作成しますか？", new_user_path %></p>
+    <p><%= link_to "Topに戻る", root_path %></p>
+  </div>
+</div>

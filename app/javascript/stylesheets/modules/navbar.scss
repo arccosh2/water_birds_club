@@ -1,0 +1,49 @@
+.nav-back {
+  background-color: rgb(255, 255, 255);
+}
+
+.navbar {
+  @extend .nav-back;
+  border-bottom: 1px solid rgba(0, 0, 0, .0975);
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 95px;
+  z-index: 10;
+  transition: ease 0.4s;
+    &__brand {
+      // margin-top: 0.3vh;
+      height: 85px;
+      width: 135px;
+      background-size: 83px;
+    }
+    &__mainLogo {
+      background-repeat: no-repeat;
+      background-image: url("~logo.svg");
+  }
+
+  .nav-link {
+    color: #555;
+    text-decoration: none;
+  }
+
+  &-nav {
+  @extend .nav-back;
+  padding: 10px;
+    & > li {
+      margin-left: 20px;
+
+      .commonNavIcon {
+        height: 40px;
+        width: 35px;
+        background-size: 30px !important;
+        background-repeat: no-repeat;
+      }
+      .profile-icon {
+        background-image: url("~prof.svg");
+      }
+    }
+  }
+}

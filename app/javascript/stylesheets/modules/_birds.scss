@@ -1,0 +1,73 @@
+
+.birds__img {
+    text-align: center;
+    z-index: 2;
+  }
+
+.words-right, .words-left {
+    position: relative;
+    text-align: center;
+    margin: 30px auto;
+    padding: 7px 10px;
+    min-width: 120px;
+    max-width: 100%;
+    background: #eeede7;
+    border-radius: 10px;
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            margin-top: 7px;
+            margin-left: -15px;
+            border: 15px solid transparent;
+            border-bottom: 15px solid #eeede7;
+        }
+
+        & p {
+            margin: 0;
+            padding: 0;
+          }
+}
+
+.flex {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.birds__inner {
+    position: relative;
+
+    &::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 90%;
+        background-color: rgb(147, 179, 194);
+    }
+}
+
+.sagi__content {
+    @extend .flex;
+}
+
+.ahiru__content {
+    @extend .flex;
+}
+
+.entrance {
+    @extend .flex;
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 60px;
+}
+
+
+  
+  
+  
+  

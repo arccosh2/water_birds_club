@@ -1,0 +1,42 @@
+.birds__img {
+    text-align: center;
+  }
+
+// .words {
+//     text-align: center;
+//     background-color: rgb(227, 241, 241);
+//     width: 70%;
+//     margin: auto;
+//     height: 40px;
+//     padding: 1em 0;
+//   }
+
+  .words {
+    position: relative;
+    text-align: center;
+    margin: auto;
+    padding: 7px 10px;
+    min-width: 120px;
+    max-width: 75%;
+    background: #e7e7e7;
+    border-radius: 10px;
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            margin-left: -15px;
+            border: 15px solid transparent;
+            border-bottom: 15px solid #e7e7e7;
+        }
+
+        & p {
+            margin: 0;
+            padding: 0;
+          }
+  }
+  
+  
+  
+  

@@ -1,0 +1,54 @@
+.nav-back, .navbar, .navbar-nav {
+  background-color: white;
+}
+
+.navbar {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.0975);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 95px;
+  z-index: 10;
+  -webkit-transition: ease 0.4s;
+  transition: ease 0.4s;
+}
+
+.navbar__brand {
+  height: 85px;
+  width: 135px;
+  background-size: 83px;
+}
+
+.navbar__mainLogo {
+  background-repeat: no-repeat;
+  background-image: url("~logo.svg");
+}
+
+.navbar .nav-link {
+  color: #555;
+  text-decoration: none;
+}
+
+.navbar-nav {
+  padding: 10px;
+}
+
+.navbar-nav > li {
+  margin-left: 20px;
+}
+
+.navbar-nav > li .commonNavIcon {
+  height: 40px;
+  width: 35px;
+  background-size: 30px !important;
+  background-repeat: no-repeat;
+}
+
+.navbar-nav > li .profile-icon {
+  background-image: url("~prof.svg");
+}
+/*# sourceMappingURL=navbar.css.map */

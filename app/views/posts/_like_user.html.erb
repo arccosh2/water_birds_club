@@ -1,0 +1,7 @@
+<p class="left-align">いい羽した人一覧</p>
+
+<strong>
+  <% likes.each.with_index do |like, index| %>
+      <%= link_to like.user.username + ", ", user_path(like.user), class: "no-text-decoration light-color" %>
+  <% end %>
+</strong>

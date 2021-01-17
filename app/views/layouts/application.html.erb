@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ja">
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Water Bird Club</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300&family=Noto+Sans+JP:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
+
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application' %>
+    <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    
+    
+    
+  </head>
+
+  <body>
+    <header>
+      <%= render 'partial/navbar' %>
+    </header>
+      <div id="content">
+        <main>
+          <%= render 'partial/messages' %>
+          <%= yield %>
+        </main>
+      </div>
+      <footer>
+        <%= render 'partial/footer' %>
+      </footer>
+
+  <%# 以下、Javascriptの記述 %>
+    <script>
+      class ScrollObserver {
+      constructor(els, cb, options) {
+          this.els = document.querySelectorAll(els);
+          const defaultOptions = {
+              root: null,
+              rootMargin: "0px",
+              threshold: 0,
+              once: true
+          };
+          this.cb = cb;
+          this.options = Object.assign(defaultOptions, options);
+          this.once = this.options.once;
+          this._init();
+      }
+      _init() {
+          const callback = function (entries, observer) {
+              entries.forEach(entry => {
+                  if (entry.isIntersecting) {
+                      this.cb(entry.target, true);
+                      if(this.once) {
+                          observer.unobserve(entry.target);
+                      }
+                  } else {
+                      this.cb(entry.target, false);
+                  }
+              });
+          };
+
+          this.io = new IntersectionObserver(callback.bind(this), this.options);
+
+          // @see https://github.com/w3c/IntersectionObserver/tree/master/polyfill
+          this.io.POLL_INTERVAL = 100;
+          
+          this.els.forEach(el => this.io.observe(el));
+      }
+
+      destroy() {
+          this.io.disconnect();
+      }
+      }
+
+      class TextAnimation {
+        constructor(el) {
+            this.DOM = {};
+            this.DOM.el = el instanceof HTMLElement ? el : document.querySelector(el);
+            this.chars = this.DOM.el.innerHTML.trim().split("");
+            this.DOM.el.innerHTML = this._splitText();
+        }
+        _splitText() {
+            return this.chars.reduce((acc, curr) => {
+                curr = curr.replace(/\s+/, '&nbsp;');
+                return `${acc}<span class="char">${curr}</span>`;
+            }, "");
+        }
+        animate() {
+            this.DOM.el.classList.toggle('inview');
+        }
+      }
+      class TweenTextAnimation extends TextAnimation {
+          constructor(el) {
+              super(el);
+              this.DOM.chars = this.DOM.el.querySelectorAll('.char');
+          }
+          
+          animate() {
+              this.DOM.el.classList.add('inview');
+              this.DOM.chars.forEach((c, i) => {
+                  TweenMax.to(c, .6, {
+                      ease: Back.easeOut,
+                      delay: i * .05,
+                      startAt: { y: '-50%', opacity: 0},
+                      y: '0%',
+                      opacity: 1
+                  });
+              });
+          }
+      }
+    </script>
+
+
+  </body>
+</html>
